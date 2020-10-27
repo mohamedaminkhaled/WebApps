@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\DestinationsController;
+use App\Http\Controllers\PlacesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,20 +16,30 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-//Route::get('/', function () {
-//    return view('index');
-//});
+/********* Begin routes for HomeController **********/
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('index', [HomeController::class, 'index']);
 Route::get('about', [HomeController::class, 'about']);
 Route::get('blog', [HomeController::class, 'blog']);
 Route::get('single-blog', [HomeController::class, 'single_blog']);
-Route::get('travel_destination', [HomeController::class, 'travel_destination']);
 Route::get('contact', [HomeController::class, 'contact']);
 Route::get('elements', [HomeController::class, 'elements']);
-Route::get('destination_details/{id}', [HomeController::class, 'show'])->name('destination_details');
-Route::post('store', [HomeController::class, 'store'])->name('destination.store');
+
+/********* End routes for HomeController **********/
+/*-------------------------------------------------------------------*/
+/********* Begin routes for DestinationController **********/
+
+Route::get('destination_places/{id}', [DestinationsController::class, 'show']);
+Route::post('store', [DestinationsController::class, 'store'])->name('destination.store');
+
+/********* End routes for DestinationController **********/
+/*------------------------------------------------------------------*/
+/********* Begin routes for PlacesController **********/
+
+Route::get('destination_details/{id}', [PlacesController::class, 'show']);
+
+/********* End routes for PlacesController **********/
 
 Route::prefix('admin')->group(function () {
     

@@ -146,7 +146,7 @@
                             </div>
                                 
                             <div class="content">
-                                <p class="d-flex align-items-center">{{$destination->name}} <a href="travel_destination">{{count($places)}} Places</a> </p>
+                                <p class="d-flex align-items-center">{{$destination->name}} <a href="destination_places/{{$destination->id}}">{{count($places)}} Places</a> </p>
                             </div>
                         </div>
                     </div>
