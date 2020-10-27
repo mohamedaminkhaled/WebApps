@@ -25,7 +25,7 @@ Route::get('/', function () {
 //routs for posts
 Route::get('/posts/create', "PostsController@create");
 Route::post('/posts/store', "PostsController@store");
-Route::get('/home', "PostsController@index");
+//Route::get('/home', "PostsController@index");
 Route::get('/posts/{id}', 'PostsController@show');
 Route::get('/posts/softDeleted', 'PostsController@trashed');
 Route::get('/posts/edit/{id}', 'PostsController@edit');
