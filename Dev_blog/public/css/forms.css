@@ -1,0 +1,36 @@
+        .custom_form{
+            margin-left: 400px;
+            margin-top: 50px;
+            width: 600px;
+        }
+        
+        .form_fields{
+            font-size: 16px;
+        }
+        
+        .form-control.form_fields{
+            font-size: 16px;
+            width: 300px;
+            height: 26px;
+            margin-bottom: 30px;
+        }
+        
+        .form-control-file.form_fields{
+            font-size: 16px;
+            width: 300px;
+            height: 34px;
+            margin-bottom: 30px;
+        }
+        
+        .btn_submit.custom{
+            color: white;
+            font-size: 18px;
+            padding: 10px 10px 10px 10px;
+            width: 100px;
+            background-color: blue;
+            border: 0;
+        }
+        
+        .btn_submit.custom:hover{
+            font-weight: bold;
+        }
