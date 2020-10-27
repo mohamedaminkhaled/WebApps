@@ -1,0 +1,31 @@
+.content{
+	color: orange;
+	font-size: 20px;
+	padding: 20px;
+	margin-bottom: 20px;
+	background-image: url("black.JPG");
+}
+
+.list-examples{
+	background: Crimson;
+	padding: 20px;
+}
+
+.list-examples li{
+	background: Cyan;
+	padding: 10px;
+	margin: 10px;
+	font-size: 20px;
+}
+
+.list-topics{
+	background: DarkCyan;
+	padding: 20px;
+}
+
+.list-topics li{
+	background: Cornsilk;
+	padding: 20px;
+	margin: 10px;
+	font-size: 20px;
+}

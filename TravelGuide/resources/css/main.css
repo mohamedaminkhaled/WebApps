@@ -1,0 +1,181 @@
+
+body{
+	margin: 0px;
+}
+
+.date-time{
+	background-color: black;
+	width: 200px;
+	color: lightblue;
+	padding: 10px;
+	box-shadow: 5px 5px 5px lightblue, 5px 5px 5px black;
+}
+
+.page2-name, .home-name{
+	padding: 20px;
+	color: red;
+	font-size: 28px;
+	font-weight: bold;
+}
+
+.page-link{
+	display: inline-block;
+	background-color: red;
+	padding: 20px;
+	font-size: 24px;
+	text-align: center;
+	text-decoration: none;
+	color: white;
+}
+
+::selection{
+	color: black;
+	background: yellow;
+}
+
+.navbar{
+	list-style-type: none;
+	background: black;
+	margin: 0px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	overflow: hidden;
+	position: sticky;
+	top: 0px;
+}
+
+.navbar li{
+	display: inline;
+	float: left;
+}
+
+.navbar li a{
+	color: white;
+	font-size: 18px;
+	text-decoration: none;
+	padding: 20px 20px;
+}
+
+.navbar li a:hover{
+	background-color: darkgrey;
+}
+
+.home{
+	font-weight: bold;
+}
+
+.active{
+	background-color: darkgrey;
+}
+
+.pagination{
+	display:inline-block;
+	margin-top: 50px;
+	margin-left: 30px;
+	font-size: 20px;
+}
+
+.pagination a{
+	color: black;
+	float: left;
+	padding: 8px 16px;
+	text-decoration: none;
+}
+
+.pagination a.active{
+	background-color: green;
+	color: white;
+}
+
+.pagination a:hover:not(.active){
+	background-color: lightgrey;
+}
+
+/* Style the footer */
+.footer {
+	background-color: #f1f1f1;
+	padding: 10px;
+	text-align: center;
+	margin-top: 150px;
+}
+
+/* Create three equal columns that floats next to each other */
+.column-footer {
+	float: left;
+	width: 30%;
+	padding: 15px;
+}
+
+/* Clear floats after the columns */
+.row-footer:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.resizable{
+	resize: both;
+	overflow: auto;
+}
+
+.fa {
+  padding: 20px;
+  font-size: 30px;
+  width: 20px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+  border-radius: 50%;
+}
+
+.fa:hover {
+    opacity: 0.7;
+}
+
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+
+.fa-google {
+  background: #dd4b39;
+  color: white;
+}
+
+.fa-linkedin {
+  background: #007bb5;
+  color: white;
+}
+
+.fa-youtube {
+  background: #bb0000;
+  color: white;
+}
+
+.fa-instagram {
+  background: #125688;
+  color: white;
+}
+
+.fa-pinterest {
+  background: #cb2027;
+  color: white;
+}
+
+.fa-snapchat-ghost {
+  background: #fffc00;
+  color: white;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.fa-skype {
+  background: #00aff0;
+  color: white;
+}
+
+
