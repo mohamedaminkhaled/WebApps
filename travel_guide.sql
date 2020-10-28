@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 27, 2020 at 02:43 PM
+-- Generation Time: Oct 29, 2020 at 12:15 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.9
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `laravel_8`
+-- Database: `travel_guide`
 --
 
 -- --------------------------------------------------------
@@ -30,20 +30,24 @@ SET time_zone = "+00:00";
 CREATE TABLE `destinations` (
   `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
-  `image` varchar(200) NOT NULL
+  `image` varchar(200) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `destinations`
 --
 
-INSERT INTO `destinations` (`id`, `name`, `image`) VALUES
-(1, 'England', '1.png'),
-(2, 'Brazil', '2.png'),
-(3, 'America', '3.png'),
-(4, 'Nepal', '4.png'),
-(5, 'Indonesia', '5.png'),
-(6, 'Maldives', '6.png');
+INSERT INTO `destinations` (`id`, `name`, `image`, `created_at`, `updated_at`) VALUES
+(1, 'England', '1.png', '2020-10-28 17:39:11', NULL),
+(2, 'Brazil', '2.png', '2020-10-28 17:39:11', NULL),
+(3, 'America', '3.png', '2020-10-28 17:39:11', NULL),
+(4, 'Nepal', '4.png', '2020-10-28 17:39:11', NULL),
+(5, 'Indonesia', '5.png', '2020-10-28 17:39:11', NULL),
+(6, 'Maldives', '6.png', '2020-10-28 17:39:11', NULL),
+(8, 'India', 'india_1603906902.jpg', '2020-10-28 17:56:48', '2020-10-28 15:46:31'),
+(9, 'Croatia', 'croatia_1603908236.jpg', '2020-10-28 16:03:56', '2020-10-28 16:03:56');
 
 -- --------------------------------------------------------
 
@@ -123,27 +127,29 @@ CREATE TABLE `personal_access_tokens` (
 
 CREATE TABLE `places` (
   `id` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `description` longtext NOT NULL,
-  `days` int(11) NOT NULL,
-  `image` varchar(200) NOT NULL,
-  `price` double NOT NULL,
-  `rate` int(11) NOT NULL,
-  `reviews` int(11) NOT NULL,
-  `destination_id` int(11) NOT NULL
+  `name` varchar(100) DEFAULT NULL,
+  `description` longtext DEFAULT NULL,
+  `days` int(11) DEFAULT NULL,
+  `image` varchar(200) DEFAULT NULL,
+  `price` double DEFAULT NULL,
+  `rate` int(11) DEFAULT NULL,
+  `reviews` int(11) DEFAULT NULL,
+  `destination_id` int(11) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `places`
 --
 
-INSERT INTO `places` (`id`, `name`, `description`, `days`, `image`, `price`, `rate`, `reviews`, `destination_id`) VALUES
-(1, 'California', 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing.\r\n\r\nVariations of passages of lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing.\r\n\r\nDay-01\r\nThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words.\r\n\r\nDay-02\r\nThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words.\r\n\r\nDay-03\r\nThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words.', 3, '1.png', 500, 4, 120, 3),
-(2, 'London', 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing.\r\n\r\nVariations of passages of lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing.\r\n\r\nDay-01\r\nThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words.\r\n\r\nDay-02\r\nThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words.\r\n\r\nDay-03\r\nThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words.', 5, '3.png', 350, 5, 132, 1),
-(3, 'Korola Megna', 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing.\r\n\r\nVariations of passages of lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing.\r\n\r\nDay-01\r\nThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words.\r\n\r\nDay-02\r\nThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words.\r\n\r\nDay-03\r\nThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words.', 3, '2.png', 230, 4, 90, 5),
-(4, 'Saintmartine Iceland', 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing.\r\n\r\nVariations of passages of lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing.\r\n\r\nDay-01\r\nThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words.\r\n\r\nDay-02\r\nThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words.\r\n\r\nDay-03\r\nThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words.', 6, '4.png', 400, 5, 140, 2),
-(5, 'Miami Beach', 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing.\r\n\r\nVariations of passages of lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing.\r\n\r\nDay-01\r\nThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words.\r\n\r\nDay-02\r\nThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words.\r\n\r\nDay-03\r\nThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words.', 4, '5.png', 600, 5, 200, 3),
-(6, 'California', 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing.\r\n\r\nVariations of passages of lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing.\r\n\r\nDay-01\r\nThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words.\r\n\r\nDay-02\r\nThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words.\r\n\r\nDay-03\r\nThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words.', 5, '6.png', 450, 4, 146, 3);
+INSERT INTO `places` (`id`, `name`, `description`, `days`, `image`, `price`, `rate`, `reviews`, `destination_id`, `created_at`, `updated_at`) VALUES
+(1, 'California', 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing.\r\n\r\nVariations of passages of lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing.\r\n\r\nDay-01\r\nThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words.\r\n\r\nDay-02\r\nThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words.\r\n\r\nDay-03\r\nThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words.', 3, '1.png', 500, 4, 120, 3, '2020-10-28 21:35:41', NULL),
+(2, 'London', 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing.\r\n\r\nVariations of passages of lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing.\r\n\r\nDay-01\r\nThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words.\r\n\r\nDay-02\r\nThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words.\r\n\r\nDay-03\r\nThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words.', 5, '3.png', 350, 5, 132, 1, '2020-10-28 21:35:41', NULL),
+(3, 'Korola Megna', 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing.\r\n\r\nVariations of passages of lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing.\r\n\r\nDay-01\r\nThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words.\r\n\r\nDay-02\r\nThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words.\r\n\r\nDay-03\r\nThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words.', 3, '2.png', 230, 4, 90, 5, '2020-10-28 21:35:41', NULL),
+(4, 'Saintmartine Iceland', 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing.\r\n\r\nVariations of passages of lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing.\r\n\r\nDay-01\r\nThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words.\r\n\r\nDay-02\r\nThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words.\r\n\r\nDay-03\r\nThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words.', 6, '4.png', 400, 5, 140, 2, '2020-10-28 21:35:41', NULL),
+(5, 'Miami Beach', 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing.\r\n\r\nVariations of passages of lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing.\r\n\r\nDay-01\r\nThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words.\r\n\r\nDay-02\r\nThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words.\r\n\r\nDay-03\r\nThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words.', 4, '5.png', 600, 5, 200, 3, '2020-10-28 21:35:41', NULL),
+(6, 'California', 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing.\r\n\r\nVariations of passages of lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing.\r\n\r\nDay-01\r\nThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words.\r\n\r\nDay-02\r\nThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words.\r\n\r\nDay-03\r\nThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words.', 5, '6.png', 450, 4, 146, 3, '2020-10-28 21:35:41', NULL);
 
 -- --------------------------------------------------------
 
@@ -177,8 +183,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('OprPT2U9vMcTkNdvH1exF3nayDPzKVKWLzJfbhbp', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiSjdvclRVWTdqME9BenhNRDVNWjVxUng0TFFZaEJQemZhZXFBRG1kdCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9pbmRleCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1603720114),
-('XiUn0OzhvvldhHQS6O1ukpOszy2XBN5t42qoeVjw', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiWXpmazI0UTBEUUdFazJEb1haUVhHYXBPbVRSZGpsVU5VYlcyVEZYVSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9pbmRleCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1603798788);
+('CyeC6gdgLQUANlJoMlvQVuoIpbaTum2d4mDMX3ji', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoienVDbmZGTzdlb1NwbDhHOTRwaUEyVGtvT0ZmU2Q5UERNSHYwbG80RCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjg6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9wbGFjZXMiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1603926592);
 
 -- --------------------------------------------------------
 
@@ -204,7 +209,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'mohamed amin', 'mohamedamin.tech@gmail.com', NULL, '$2y$10$/hrUK3YEaKTHbkdyYOJdKud8uq2OiRWcg/gGgkIoedaD0OgG1aXN2', NULL, NULL, 'S6r0or3gDhFiAOnQ5WZfmGPgHtbb9ejY5tYDlL7ucDEhkiPgHs0ZM0fR9oy4', '2020-10-11 09:56:17', '2020-10-11 10:23:23');
+(1, 'mohamed amin', 'mohamedamin.tech@gmail.com', NULL, '$2y$10$OPp2cNeBg2uM2akEhKH1Fuyv2VKNI5wW3RzslrsSsbWuzmg8Qh9S6', NULL, NULL, '50rrSLJdgWWMFgMdfsq32oXYYHmTcRXCGYAWtwhleAYjtEMysoa6fFGhy5cC', '2020-10-11 09:56:17', '2020-10-27 12:50:56');
 
 --
 -- Indexes for dumped tables
@@ -280,7 +285,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `destinations`
 --
 ALTER TABLE `destinations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -304,7 +309,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `places`
 --
 ALTER TABLE `places`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `reservations`
