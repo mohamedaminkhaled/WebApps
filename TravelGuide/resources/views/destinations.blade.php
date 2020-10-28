@@ -61,7 +61,6 @@
                         <div class="col-xl-12 col-md-12">
                             <div class="slider_text text-center">
                                 <h3>Australia</h3>
-                                <p>Pixel perfect design with awesome contents</p>
                                 <a href="#" class="boxed-btn3">Explore Now</a>
                             </div>
                         </div>
@@ -152,14 +151,6 @@
                     </div>
                 @endforeach
             </div>
-            <br>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="more_place_btn text-center">
-                        <a class="boxed-btn4" href="/destinations">More Destinations</a>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
     <!-- popular_destination_area_end  -->
@@ -208,206 +199,10 @@
                     </div>
                 </div>
             {!! Form::close() !!}
-            
-            <script src="{{asset('https://code.jquery.com/jquery-3.5.1.js')}}"
-            integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-            crossorigin="anonymous"></script>
-            
-            <script>
-                $(document).on('click', '#add_destination', function(e){
-                    e.preventDefault();
-                    $.ajax({
-                        type: 'post',  // http method
-                        url: {{route('destination.store')}},
-                        data: {
-                            'name': $("input[name='name']").val(),
-                            'image': $("input[name='image']").val(),
-                        },
-                        success: function(data){
-                        },
-                        error: function (reject) {
-                        }
-                    });
-                
-                });
-            </script>
-            
         </div>
     </div>
     <!-- add_distination_area_end  -->
-    
-    <!-- popular_places_area_start -->
-    <div class="popular_places_area">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-6">
-                    <div class="section_title text-center mb_70">
-                        <h3>Popular Places</h3>
-                        <p>Suffered alteration in some form, by injected humour or good day randomised booth anim 8-bit hella wolf moon beard words.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="row">
-                @foreach($allPlaces as $place)
-                    <div class="col-lg-4 col-md-6">
-                        <div class="single_place">
-                            <div class="thumb">
-                                <img src="storage/storage/places_images/{{$place->image}}" alt="">
-                                <a href="#" class="prise">${{$place->price}}</a>
-                            </div>
-                            <div class="place_info">
-                                <a href="destination_details/{{$place->id}}"><h3>{{$place->name}}</h3></a>
-                                
-                                <div id="hide" style="display: none">
-                                    {{$placeDist = App\Models\Place::find($place->id)}}
-                                </div>
-                                
-                                <p>{{$placeDist->destination->name}}</p>
-                                <div class="rating_days d-flex justify-content-between">
-                                    <span class="d-flex justify-content-center align-items-center">
-                                       
-                                        @for($i = $place->rate; $i > 0; $i--)
-                                            <i class="fa fa-star"></i>
-                                        @endfor
-                                         
-                                        <a href="#">({{$place->reviews}} Review)</a>
-                                    </span>
-                                    <div class="days">
-                                        <i class="fa fa-clock-o"></i>
-                                        <a href="#">{{$place->days}} Days</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-            
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="more_place_btn text-center">
-                        <a class="boxed-btn4" href="/places">More Places</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- popular_places_area_end  -->
-        
-    <!-- add_place_area_start  -->
-    <div class="newletter_area overlay">
-        <div class="container">
-            {!! Form::open(['action'=>'App\Http\Controllers\PlacesController@store', 'method'=>'POST', 'name'=>'add-place', 'enctype'=>'multipart/form-data']) !!}
-                @csrf
-                <div class="row justify-content-center align-items-center">
-                    <div class="col-lg-10">
-                        <div class="row align-items-center">
-                            <div class="col-lg-5">
-                                <div class="newsletter_text">
-                                    <h4>Add new place</h4>
-                                </div>
-                            </div>
-                            <div class="col-lg-7">
-                                <div class="mail_form">
-                                    <div class="row no-gutters">
-                                        <div class="col-lg-9 col-md-8">
-                                            <div class="name" style="color:white">Place name:</div>
-                                            <div class="newsletter_field">
-                                                <input type="text" name="name" placeholder="Destination name" required>
-                                            </div>
-                                            <br>
-                                            <div class="newsletter_field">
-                                                <div class="name" style="color:white">Select destination:</div>
-                                                <select name="destination_id">
-                                                    <option value="">Select destination ---</option>
-                                                    @foreach($destinations as $destination)
-                                                        <option value="{{$destination->id}}">{{$destination->name}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                            <br><br><br>
-                                            <div class="newsletter_field-row" style="color:white">
-                                                <div class="name">Upload image</div>
-                                                <div class="value">
-                                                    <div class="input-group js-input-file">
-                                                        <input class="choose-file" type="file" name="image" required>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-md-4">
-                                            <br>
-                                            <div class="newsletter_btn">
-                                                <button class="boxed-btn4 " name="forma-add-place" type="submit" >Add</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            {!! Form::close() !!}
-        </div>
-    </div>
-    <!-- add_place_area_end  -->
-    
-    <!-- travel_variation_area_start  -->
-    <div class="travel_variation_area">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_travel text-center">
-                        <div class="icon">
-                            <img src="img/svg_icon/1.svg" alt="">
-                        </div>
-                        <h3>Comfortable Journey</h3>
-                        <p>A wonderful serenity has taken to the possession of my entire soul.</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_travel text-center">
-                        <div class="icon">
-                            <img src="img/svg_icon/2.svg" alt="">
-                        </div>
-                        <h3>Luxuries Hotel</h3>
-                        <p>A wonderful serenity has taken to the possession of my entire soul.</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_travel text-center">
-                        <div class="icon">
-                            <img src="img/svg_icon/3.svg" alt="">
-                        </div>
-                        <h3>Travel Guide</h3>
-                        <p>A wonderful serenity has taken to the possession of my entire soul.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- travel_variation_area_end  -->
-
-    <!-- video_area_start  -->
-    <div class="video_area video_bg overlay">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="video_wrap text-center">
-                        <h3>Enjoy Video</h3>
-                        <div class="video_icon">
-                            <a class="popup-video video_play_button" href="https://www.youtube.com/watch?v=f59dDEk57i0">
-                                <i class="fa fa-play"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- video_area_end  -->
-
+ 
     <!-- testimonial_area  -->
     <div class="testimonial_area">
         <div class="container">

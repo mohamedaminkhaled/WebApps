@@ -15,8 +15,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $places = Place::all();
-        $destinations = Destination::all();
+        $places = Place::all()->take(6);
+        $destinations = Destination::all()->take(6);
         
         return view('index')->with('allPlaces', $places)
                             ->with('destinations', $destinations);
@@ -75,7 +75,48 @@ class HomeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'image'=>'mimes:jpeg,jpg,png,JPEG | max:2000'
+        ]);
+        
+        if ($request->has('form-add-distination')) {
+            if($request->hasFile('image')){
+                $fileNameWithExtension = $request->file('image')->getClientOriginalName();
+                $fileName = pathinfo($fileNameWithExtension, PATHINFO_FILENAME);
+                $extension = $request->file('image')->getClientOriginalExtension();
+                $fileNameStore = $fileName.'_'.time().'.'.$extension;
+                $path = $request->file('image')->storeAs('public/storage/destinations_images',$fileNameStore);
+            }else{
+                $fileNameStore = 'noimage.jpg';
+            }
+        
+            $dest = new Destination();
+            $dest->name = $request->input('name');
+            $dest->image = $fileNameStore;
+            $dest->save();
+            
+            return redirect()->back();
+        }
+        
+        if ($request->has('forma-add-place')) {
+            if($request->hasFile('image')){
+                $fileNameWithExtension = $request->file('image')->getClientOriginalName();
+                $fileName = pathinfo($fileNameWithExtension, PATHINFO_FILENAME);
+                $extension = $request->file('image')->getClientOriginalExtension();
+                $fileNameStore = $fileName.'_'.time().'.'.$extension;
+                $path = $request->file('image')->storeAs('public/storage/places_images',$fileNameStore);
+            }else{
+                $fileNameStore = 'noimage.jpg';
+            }
+            
+            $place = new Place();
+            $place->name = $request->input('name');
+            $place->destination_id = $request->input('destination_id');
+            $place->image = $fileNameStore;
+            $place->save();
+            
+            return redirect()->back();
+        }
     }
 
     /**

@@ -25,27 +25,33 @@ Route::get('blog', [HomeController::class, 'blog']);
 Route::get('single-blog', [HomeController::class, 'single_blog']);
 Route::get('contact', [HomeController::class, 'contact']);
 Route::get('elements', [HomeController::class, 'elements']);
+Route::post('store', [HomeController::class, 'store'])->name('destination.store');
 
 /********* End routes for HomeController **********/
+
 /*-------------------------------------------------------------------*/
+
 /********* Begin routes for DestinationController **********/
 
 Route::get('destination_places/{id}', [DestinationsController::class, 'show']);
-Route::post('store', [DestinationsController::class, 'store'])->name('destination.store');
+Route::post('destinations/store', [DestinationsController::class, 'store'])->name('destination.store');
+Route::get('/destinations', [DestinationsController::class, 'index']);
 
 /********* End routes for DestinationController **********/
+
 /*------------------------------------------------------------------*/
+
 /********* Begin routes for PlacesController **********/
 
 Route::get('destination_details/{id}', [PlacesController::class, 'show']);
+Route::post('places/store', [PlacesController::class, 'store']);
+Route::get('/places', [PlacesController::class, 'index']);
 
 /********* End routes for PlacesController **********/
 
 Route::prefix('admin')->group(function () {
     
 });
-
-
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

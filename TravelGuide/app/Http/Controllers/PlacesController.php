@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Place;
+use App\Models\Destination;
 
 class PlacesController extends Controller
 {
@@ -14,7 +15,11 @@ class PlacesController extends Controller
      */
     public function index()
     {
-        //
+        $places = Place::all();
+        $destinations = Destination::all();
+        
+        return view('places')->with('places', $places)
+                             ->with('destinations', $destinations);
     }
 
     /**
@@ -35,7 +40,22 @@ class PlacesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if($request->hasFile('image')){
+            $fileNameWithExtension = $request->file('image')->getClientOriginalName();
+            $fileName = pathinfo($fileNameWithExtension, PATHINFO_FILENAME);
+            $extension = $request->file('image')->getClientOriginalExtension();
+            $fileNameStore = $fileName.'_'.time().'.'.$extension;
+            $path = $request->file('image')->storeAs('public/storage/destinations_images',$fileNameStore);
+        }else{
+            $fileNameStore = 'noimage.jpg';
+        }
+        
+        $place = new Place();
+        $place->name = $request->input('name');
+        $place->image = $fileNameStore;
+        $place->save();
+        
+        return redirect()->back();
     }
 
     /**
