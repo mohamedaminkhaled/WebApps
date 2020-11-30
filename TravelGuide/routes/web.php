@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DestinationsController;
 use App\Http\Controllers\PlacesController;
+use App\Http\Controllers\DestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,6 +49,15 @@ Route::post('places/store', [PlacesController::class, 'store']);
 Route::get('/places', [PlacesController::class, 'index']);
 
 /********* End routes for PlacesController **********/
+
+/*------------------------------------------------------------------*/
+
+/********* Begin routes for Ajax **********/
+
+Route::get('/destAjax/create', [DestController::class,'create']);
+Route::post('/destAjax/store', [DestController::class,'store'])->name('ajaxdest.store'); 
+
+/********* End routes for Ajax **********/
 
 Route::prefix('admin')->group(function () {
     
