@@ -10,8 +10,7 @@ use DB;
 class postsController extends Controller
 {
     
-     public function __construct()
-    {
+    public function __construct(){
         $this->middleware('auth',['except'=>['index','show']]);
     }
     
@@ -21,8 +20,7 @@ class postsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index(){
         $posts = Account::orderBy('created_at','desc')->get();
         //$posts = Account::orderBy('created_at','desc')->paginate(3);
         //$posts = Account::orderBy('created_at','desc')->take(1)->get();
@@ -49,10 +47,10 @@ class postsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-                'name'=>'required',
-                'email'=>'required',
-                'subject'=>'required',
-                'post_image'=>'mimes:jpeg,jpg,png,JPEG | max:1000',
+          'name'=>'required',
+          'email'=>'required',
+          'subject'=>'required',
+          'post_image'=>'mimes:jpeg,jpg,png,JPEG | max:1000',
         ]);
         
         if($request->hasFile('post_image')){

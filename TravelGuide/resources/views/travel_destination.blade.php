@@ -89,7 +89,6 @@
     </div>
     <!-- where_togo_area_end  -->
 
-
     <div class="popular_places_area">
         <div class="container">
             <div class="row">
@@ -148,7 +147,7 @@
                         <div class="col-lg-6 col-md-6">
                             <div class="single_place">
                                 <div class="thumb">
-                                    <img src="{{asset("storage/places_images/$place->image")}}" alt="">
+                                    <img src="{{asset("storage/storage/places_images/$place->image")}}" alt="">
                                     <a href="#" class="prise">${{$place->price}}</a>
                                 </div>
                                 <div class="place_info">

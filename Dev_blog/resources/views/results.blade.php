@@ -72,7 +72,7 @@
         <div class="container">
           <div class="row align-items-center justify-content-center">
             <div class="col-lg-10 text-center">
-              <h1><strong>Blog Posts</strong></h1>
+              <h1><strong>Search results</strong></h1>
             </div>
           </div>
         </div>

@@ -34,8 +34,8 @@ Route::post('store', [HomeController::class, 'store'])->name('destination.store'
 
 /********* Begin routes for DestinationController **********/
 
-Route::get('destination_places/{id}', [DestinationsController::class, 'show']);
-Route::post('destinations/store', [DestinationsController::class, 'store'])->name('destination.store');
+Route::get('/destination_places/{id}', [DestinationsController::class, 'show']);
+Route::post('/destinations/store', [DestinationsController::class, 'store'])->name('destination.store');
 Route::get('/destinations', [DestinationsController::class, 'index']);
 
 /********* End routes for DestinationController **********/
@@ -44,8 +44,9 @@ Route::get('/destinations', [DestinationsController::class, 'index']);
 
 /********* Begin routes for PlacesController **********/
 
-Route::get('destination_details/{id}', [PlacesController::class, 'show']);
-Route::post('places/store', [PlacesController::class, 'store']);
+Route::get('/destination_details/{id}', [PlacesController::class, 'show']);
+Route::get('/destination_places/destination_details/{id}', [PlacesController::class, 'show']);
+Route::post('/places/store', [PlacesController::class, 'store']);
 Route::get('/places', [PlacesController::class, 'index']);
 
 /********* End routes for PlacesController **********/

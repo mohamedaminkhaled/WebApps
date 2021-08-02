@@ -81,7 +81,7 @@ Route::get('/results', function () {
 });
 
 /*test one to many relationship between category and post
- *route for rwturn posts belongs to specific category
+ *route for return posts belongs to specific category
  */
 Route::get('/categoryPosts/{id}', function ($id) {
     return view('posts/categoryPosts')->with('posts',App\Category::find($id)->posts)

@@ -73,7 +73,7 @@ class PlacesController extends Controller
                     "&amount=". $place->price .
                     "&currency=EUR" .
                     "&paymentType=DB";
-    
+                    
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_HTTPHEADER, array(
@@ -98,9 +98,7 @@ class PlacesController extends Controller
         }else{
             $paymentStatus = "failed";
         }
-        
-        
-        
+                
         return view('destination_details')->with('place', $place)
                                           ->with('response', $checkoutId)
                                           ->with('status', $paymentStatus);

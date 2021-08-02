@@ -15,10 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/about', "userController@aboutMe");
-Route::get('/mycources', "userController@cources");
-Route::get('/galiry', "userController@getGaliry");
-
 Route::resource('/posts', "postsController");
 
 Auth::routes();
